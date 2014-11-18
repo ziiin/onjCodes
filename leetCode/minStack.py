@@ -10,19 +10,20 @@ class MinStack:
     # @return an integer
     def push(self, x):
         minElement = None
-        if len(self.minNow) == 0
-        #
-        if self.minElement != None and x < self.minElement:
-            self.minElement = x
-        elif self.minElement == None :
-            self.minElement = x
-
+        if len(self.minNow) == 0:
+            minElement = x
+        else:
+            minElement = min(x, self.minNow[-1])
+        
         self.elements.append(x)
+        self.minNow.append(minElement)
+
         return len(self.elements)
 
     # @return nothing
     def pop(self):
         self.elements.pop()
+        self.minNow.pop()
     
     # @return an integer
     def top(self):
@@ -30,6 +31,6 @@ class MinStack:
         
     # @return an integer
     def getMin(self):
-        return self.minElement
+        return self.minNow[-1]
 
         
